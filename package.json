@@ -1,0 +1,19 @@
+{
+  "name": "comrade",
+  "version": "1.0.0",
+  "description": "A discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Shubham Parihar",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "discord.js": "^12.4.1",
+    "ffmpeg-static": "^4.2.7",
+    "mongoose": "^5.10.11",
+    "ytdl-core": "^4.0.1"
+  }
+}
