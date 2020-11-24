@@ -33,12 +33,16 @@ module.exports = {
                     collector.on('collect', async (reaction, user) => {
                         const member = await message.guild.members.fetch(user);
                         const emojiDoc = res.find(doc => doc.character === reaction.emoji.name);
-                        const role = message.guild.roles.cache.find(r => r.id === emojiDoc.id);
-                        if (role) {
-                            if (!member.roles.cache.has(role.id)) {
-                                member.roles.add(role);
+                        if (emojiDoc) {
+                            const role = message.guild.roles.cache.find(r => r.id === emojiDoc.id);
+                            if (role) {
+                                if (!member.roles.cache.has(role.id)) {
+                                    member.roles.add(role);
+                                } else {
+                                    reaction.users.remove(member.id);
+                                }
                             } else {
-                                reaction.users.remove(member.id);
+                                message.channel.send(`The role with id ${emojiDoc.id} has been deleted.`);
                             }
                         } else {
                             reaction.remove();
