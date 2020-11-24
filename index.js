@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // event imports
 const ready = require('./events/ready');
 const message = require('./events/message');
+const roleDelete = require('./events/roleDelete');
 
 mongoose.connect(process.env.ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(res => console.log('Connected to database.'))
@@ -22,5 +23,6 @@ for (const file of commandfiles) {
 // events
 ready(client);
 message(client);
+roleDelete(client);
 
 client.login(process.env.TOKEN);
