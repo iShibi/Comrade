@@ -18,7 +18,9 @@ module.exports = {
                 if (res.length) {
                     res.forEach(emoji => {
                         const role = guildRolesCollection.find(role => role.id === emoji.id);
-                        roleEmbed.addField(role.name, emoji.character, true);
+                        if (role) {
+                            roleEmbed.addField(role.name, emoji.character, true);
+                        }
                     });
 
                     const sentRoleEmbed = await message.channel.send(roleEmbed);
